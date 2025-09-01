@@ -74,6 +74,7 @@ const NewUser = () => {
               <input
                 type="radio"
                 name="gender"
+                value='Mail'
                 className="radio radio-accent"
                 defaultChecked
               />
@@ -83,6 +84,7 @@ const NewUser = () => {
               <input
                 type="radio"
                 name="gender"
+                value='Female'
                 className="radio radio-accent"
               />
             </label>
@@ -95,6 +97,7 @@ const NewUser = () => {
               <input
                 type="radio"
                 name="status"
+                value={'Active'}
                 className="radio radio-accent"
                 defaultChecked
               />
@@ -104,6 +107,7 @@ const NewUser = () => {
               <input
                 type="radio"
                 name="status"
+                value={'Inactive'}
                 className="radio radio-accent"
               />
             </label>
