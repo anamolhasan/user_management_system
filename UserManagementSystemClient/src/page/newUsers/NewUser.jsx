@@ -8,7 +8,8 @@ const NewUser = () => {
     e.preventDefault()
     const form = e.target
     const formData = new FormData(form)
-    
+    const newUser = Object.fromEntries(formData.entries())
+    console.log(newUser)
   }
   return (
     <div className="container mx-auto">
