@@ -1,28 +1,41 @@
 import React from "react";
 import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
 
 const NewUser = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const newUser = Object.fromEntries(formData.entries());
+    console.log(newUser);
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    const form = e.target
-    const formData = new FormData(form)
-    const newUser = Object.fromEntries(formData.entries())
-    console.log(newUser)
+    fetch(`${import.meta.env.VITE_API_URL}/users`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        if (result.acknowledged) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your account has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+           // ✅ ফর্ম reset
+          form.reset()
+        }
+      });
+      
+  };
 
-    fetch(`${import.meta.env.VITE_API_URL}/users`,{
-       method:'POST',
-       headers:{
-        'content-type':'application/json'
-       },
-       body:JSON.stringify(newUser)
-    })
-    .then(res => res.json())
-    .then(result => {
-      console.log(result)
-    })
-  }
   return (
     <div className="container mx-auto">
       <Link to={"/"} className="mt-32 mb-20 btn btn-primary">
@@ -54,49 +67,51 @@ const NewUser = () => {
             placeholder="enter your email"
           />
 
-         <div className="flex items-center mt-5 gap-8 ">
-          <p className="font-bold">Gender</p>
+          <div className="flex items-center mt-5 gap-8 ">
+            <p className="font-bold">Gender</p>
             <label className="label  ">
-            Male
-            <input
-              type="radio"
-              name="gender"
-              className="radio radio-accent"
-              defaultChecked
-            />
-          </label>
-          <label className="label  ">
-            female
-            <input
-              type="radio"
-              name="gender"
-              className="radio radio-accent"
-            />
-          </label>
-         </div>
-
-         <div className="flex items-center mt-5 gap-8 ">
-          <p className="font-bold">Status</p>
+              Male
+              <input
+                type="radio"
+                name="gender"
+                className="radio radio-accent"
+                defaultChecked
+              />
+            </label>
             <label className="label  ">
-            Active
-            <input
-              type="radio"
-              name="status"
-              className="radio radio-accent"
-              defaultChecked
-            />
-          </label>
-          <label className="label  ">
-            Inactive
-            <input
-              type="radio"
-              name="status"
-              className="radio radio-accent"
-            />
-          </label>
-         </div>
+              female
+              <input
+                type="radio"
+                name="gender"
+                className="radio radio-accent"
+              />
+            </label>
+          </div>
 
-          <button type="submit" className=" btn btn-neutral mt-6 font-bold">Save</button>
+          <div className="flex items-center mt-5 gap-8 ">
+            <p className="font-bold">Status</p>
+            <label className="label  ">
+              Active
+              <input
+                type="radio"
+                name="status"
+                className="radio radio-accent"
+                defaultChecked
+              />
+            </label>
+            <label className="label  ">
+              Inactive
+              <input
+                type="radio"
+                name="status"
+                className="radio radio-accent"
+              />
+            </label>
+          </div>
+
+          <button type="submit" className=" btn btn-neutral mt-6 font-bold">
+            Save
+          </button>
         </fieldset>
       </form>
     </div>
