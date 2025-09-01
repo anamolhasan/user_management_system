@@ -5,6 +5,8 @@ import { Link } from "react-router";
 
 const Table = ({ users }) => {
   // console.log(users)
+
+
   return (
     <div className="container mx-auto mb-20">
       <Link to={"/new-user"} className="mt-10 mb-10 btn btn-primary">
@@ -37,9 +39,9 @@ const Table = ({ users }) => {
                   <Link to={`/update-user/${user._id}`} className=" p-2 rounded-md shadow-lg/70  ">
                     <FaPencilAlt />
                   </Link>
-                  <Link to={``} className=" p-2 rounded-md shadow-lg/70 ">
+                  <button  className=" p-2 rounded-md shadow-lg/70 ">
                     <ImCross />
-                  </Link>
+                  </button>
                 </td>
               </tr>
             ))}
