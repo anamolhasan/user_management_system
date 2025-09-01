@@ -4,10 +4,10 @@ import { ImCross } from "react-icons/im";
 import { Link } from "react-router";
 
 const Table = ({ users }) => {
-  console.log(users)
+  // console.log(users)
   return (
     <div className="container mx-auto mb-20">
-      <Link to={"/new-user"} className="mt-32 mb-20 btn btn-primary">
+      <Link to={"/new-user"} className="mt-10 mb-10 btn btn-primary">
         New User
         <FaUser />
       </Link>
@@ -34,9 +34,9 @@ const Table = ({ users }) => {
                 <td>{user.gender}</td>
                 <td>{user.status}</td>
                 <td className="flex justify-center gap-3 items-center">
-                  <button className=" p-2 rounded-md shadow-lg/70  ">
+                  <Link to={`/update-user/${user._id}`} className=" p-2 rounded-md shadow-lg/70  ">
                     <FaPencilAlt />
-                  </button>
+                  </Link>
                   <Link to={``} className=" p-2 rounded-md shadow-lg/70 ">
                     <ImCross />
                   </Link>

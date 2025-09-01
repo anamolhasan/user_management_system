@@ -10,7 +10,7 @@ const NewUser = () => {
     const form = e.target;
     const formData = new FormData(form);
     const newUser = Object.fromEntries(formData.entries());
-    console.log(newUser);
+    // console.log(newUser);
 
     fetch(`${import.meta.env.VITE_API_URL}/users`, {
       method: "POST",
@@ -40,7 +40,7 @@ const NewUser = () => {
 
   return (
     <div className="container mx-auto">
-      <Link to={"/"} className="mt-32 mb-20 btn btn-primary">
+      <Link to={"/"} className="mt-10  btn btn-primary">
         <MdOutlineKeyboardDoubleArrowLeft className="text-2xl" />
         All User
       </Link>
