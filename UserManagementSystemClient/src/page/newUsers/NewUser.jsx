@@ -10,6 +10,18 @@ const NewUser = () => {
     const formData = new FormData(form)
     const newUser = Object.fromEntries(formData.entries())
     console.log(newUser)
+
+    fetch(`${import.meta.env.VITE_API_URL}/users`,{
+       method:'POST',
+       headers:{
+        'content-type':'application/json'
+       },
+       body:JSON.stringify(newUser)
+    })
+    .then(res => res.json())
+    .then(result => {
+      console.log(result)
+    })
   }
   return (
     <div className="container mx-auto">

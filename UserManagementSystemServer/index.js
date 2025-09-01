@@ -29,7 +29,10 @@ async function run() {
 
     const collectionSchedule = client.db("gymSchedule").collection("userManagementSystem");
 
-   
+    app.post('/users', (req, res) => {
+      const newUser = req.body
+      console.log(newUser)
+    })
 
 
 
