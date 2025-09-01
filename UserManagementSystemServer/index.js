@@ -27,11 +27,13 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     // await client.connect();
 
-    const collectionSchedule = client.db("gymSchedule").collection("userManagementSystem");
+    const usersCollection = client.db("gymSchedule").collection("userManagementSystem");
 
-    app.post('/users', (req, res) => {
+    app.post('/users', async(req, res) => {
       const newUser = req.body
-      console.log(newUser)
+      // console.log(newUser)
+      const result = await usersCollection.insertOne(newUser)
+      res.send(result)
     })
 
 
