@@ -36,6 +36,14 @@ async function run() {
       res.send(result)
     })
 
+    // user single get method
+    app.get('/users/:id', async(req, res) => {
+      const id = req.params.id
+      const query = {_id: new ObjectId(id)}
+      const result = await usersCollection.findOne(query)
+      res.send(result)
+    })
+
     //user  post method 
     app.post('/users', async(req, res) => {
       const newUser = req.body
@@ -44,6 +52,11 @@ async function run() {
       res.send(result)
     })
 
+    // user delete method
+    app.delete('/users', async(req, res) => {
+      const id = req.params.id
+      console.log(id)
+    })
 
 
 

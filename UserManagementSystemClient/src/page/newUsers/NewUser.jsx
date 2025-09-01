@@ -1,9 +1,10 @@
 import React from "react";
 import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
 const NewUser = () => {
+  const navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -31,6 +32,7 @@ const NewUser = () => {
           });
            // ✅ ফর্ম reset
           form.reset()
+          navigate('/')
         }
       });
       
