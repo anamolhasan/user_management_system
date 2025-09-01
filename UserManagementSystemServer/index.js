@@ -29,6 +29,14 @@ async function run() {
 
     const usersCollection = client.db("gymSchedule").collection("userManagementSystem");
 
+    
+    // user get method
+    app.get('/users', async(req, res) => {
+      const result = await usersCollection.find().toArray()
+      res.send(result)
+    })
+
+    //user  post method 
     app.post('/users', async(req, res) => {
       const newUser = req.body
       // console.log(newUser)

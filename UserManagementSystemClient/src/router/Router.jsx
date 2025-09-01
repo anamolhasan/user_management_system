@@ -12,7 +12,8 @@ export const router = createBrowserRouter([
     children:[
         {
             index:true,
-            Component:Home
+            Component:Home,
+            loader:()=> fetch(`${import.meta.env.VITE_API_URL}/users`)
         },
         {
             path:'new-user',
